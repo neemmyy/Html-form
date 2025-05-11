@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Html Form</title>
+        <style>
+             body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            form {
+                max-width: 400px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid cyan;
+                border-radius: 10px;
+                background-color: lightgray;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input[type="text"], input[type="email"]{
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid cyan;
+                border-radius: 5px;
+            }
+            input[type="text"]:hover, input[type="email"]:hover {
+                border-color: pink;
+            }
+            input[type="submit"], input[type="reset"] {
+                padding: 10px 20px;
+                margin-right: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s ease, opacity 0.3s ease;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+            input[type="reset"] {
+                background-color: black;
+            }
+            input[type="submit"]:hover, input[type="reset"]:hover {
+                opacity: 0.9;
+            }
+            @media (max-width: 600px) {
+                form {
+                    width: 90%;
+                }
+            }    
+        </style>
+    </head>
+    <body>
+        <form action="https://example.com/submit" method="post" id="registrationForm">
+            <h2>Registration Form</h2>
+            <fieldset>
+                <legend>Personal Information</legend>
+        <label for="First_name">First name</label>
+        <input type ="text" id="First_name" name="First_name" placeholder="Enter your first name" required><br><br>
+        <label for="Last_name">Last name</label>
+        <input type ="text" id="Last_name" name="Last_name" placeholder="Enter your last name" required><br><br>
+        <label for="Email">Email</label>
+        <input type ="email" id="Email" name="Email" placeholder="Enter your email address" required><br><br>
+        </fieldset>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset"><br><br>
+        </form>
+        
+        <script>
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the form from refreshing the page
+        
+                // Get form data
+                const firstName = document.getElementById('First_name').value;
+                const lastName = document.getElementById('Last_name').value;
+                const email = document.getElementById('Email').value;
+
+                // Validate form data
+                if (!firstName || !lastName || !email) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                // Log the data to the console
+                console.log(`
+                    Submitted Information:
+                    ----------------------
+                    First Name: ${firstName}
+                    Last Name: ${lastName}
+                    Email: ${email}
+                `);
+
+
+                // Clear the form after submission
+                document.getElementById('registrationForm').reset();
+            });
+        </script>
+        </body>
+        </html>
+
